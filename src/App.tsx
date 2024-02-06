@@ -19,7 +19,7 @@ function App() {
     <div className="App">
       <header className="App-header">
 
-        <h1>{isRunning ? "Running" : "Paused"}</h1>
+        <h1>{isRunning ? "Running..." : "Paused"}</h1>
         <Stopwatch
           isRunning={isRunning}
         />
