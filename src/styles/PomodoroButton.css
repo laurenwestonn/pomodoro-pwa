@@ -1,8 +1,18 @@
 .pomodoro-button {
-  width: 200px;
-  height: 200px;
+  position: relative;
+  width: 85%;
+  padding-bottom: 85%;
   border-radius: 100%;
   background-color: darkslateblue;
-  color: white;
   border: 0;
+}
+
+.pomodoro-button p {
+  position: absolute;
+  color: white;
+  font-size: 28px;
+  font-weight: bold;
+  top:50%; left:50%;
+  transform: translate(-50%, -50%);
+  margin:0;
 }

@@ -36,3 +36,23 @@
     transform: rotate(360deg);
   }
 }
+
+.circle-button {
+  border: 0;
+  border-radius: 100%;
+  width: 60px;
+  height: 60px;
+  background-color: #f3e8d8;
+
+}
+
+.time__focus {
+  font-size: 28px;
+  font-weight: bold;
+  color: rgb(221, 155, 61);
+}
+
+.time__break {
+  font-size: 16px;
+  color: rgb(148, 203, 240);
+}
