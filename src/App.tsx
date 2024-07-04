@@ -1,9 +1,10 @@
 import reset from "./img/reset.png";
 import finish from "./img/finish.png";
 import "./Common.css";
-import "./styles/ResultsPage.css";
 import PomodoroPage from "./tsx/PomodoroPage";
 import { useEffect, useState } from "react";
+import ResultsPage from "./tsx/ResultsPage";
+import CircleButton from "./tsx/CircleButton";
 
 export enum State {
   initial,
@@ -23,28 +24,6 @@ export const formatTime = (time: number) => {
       {time < 0 ? "-" : ""}
       {hours}:{minutes.toString().padStart(2, "0")}:
       {seconds.toString().padStart(2, "0")}
-    </>
-  );
-};
-
-const formatTimeSimple = (time: number) => {
-  const absTime = Math.abs(time);
-  if (absTime < 60) {
-    return `${absTime}s`;
-  } else {
-    if (absTime < 3600) {
-      return `${Math.floor(absTime / 60)}m ${Math.floor(absTime % 60)}s`;
-    }
-  }
-
-  const hours = Math.floor(absTime / 3600);
-  const minutes = Math.floor((absTime % 3600) / 60);
-  const seconds = absTime % 60;
-
-  return (
-    <>
-      {time >= 0 ? "-" : ""} {hours}hr {minutes.toString().padStart(2, "0")}m{" "}
-      {seconds.toString().padStart(2, "0")}s
     </>
   );
 };
@@ -84,56 +63,32 @@ function App() {
         />
 
         {state === State.results && (
-          <>
-            <h1>Results</h1>
-            {history.map((time, i) => (
-              <p
-                key={i}
-                className={i % 2 === 0 ? "time__focus" : "time__break"}
-              >
-                {formatTimeSimple(time)}
-              </p>
-            ))}
-          </>
+          <ResultsPage history={history} setHistory={setHistory} time={time} />
         )}
 
         {(state === State.focus ||
           state === State.break ||
           state === State.results) && (
-          <button
-            className="circle-button"
-            aria-label="reset"
-            // style={{backgroundImage: logo}}
-            style={{
-              backgroundImage: `url(${reset})`,
-              backgroundRepeat: "no-repeat",
-              backgroundPosition: "50% 50%",
-              backgroundSize: "70%"
-            }}
-            // style={{backgroundImage: './logo.svg'}}
+          <CircleButton
+            name="reset"
             onClick={() => {
               setState(State.initial);
               setHistory([]);
               setTime(0);
             }}
-          ></button>
+            imagePath={reset}
+          />
         )}
 
         {(state === State.focus || state === State.break) && (
-          <button
-            className="circle-button"
-            aria-label="finish"
-            style={{
-              backgroundImage: `url(${finish})`,
-              backgroundRepeat: "no-repeat",
-              backgroundPosition: "50% 50%",
-              backgroundSize: "70%"
-            }}
+          <CircleButton
+            name="finish"
             onClick={() => {
               setState(State.results);
               setHistory([...history, time]);
             }}
-          ></button>
+            imagePath={finish}
+          />
         )}
       </header>
     </div>
