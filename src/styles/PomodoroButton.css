@@ -24,3 +24,7 @@
 .pomodoro-button__break {
   background-color: var(--break-colour);
 }
+
+.pomodoro-button__overran {
+  background-color: rgb(119, 16, 16);
+}

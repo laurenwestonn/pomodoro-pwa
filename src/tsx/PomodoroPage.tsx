@@ -40,6 +40,7 @@ const PomodoroPage = (props: PomodoroPageInterface) => {
           </p>
         }
         name={"focus"}
+        hasOverran={props.time < 0}
       />
     );
   } else if (props.state === State.break) {
@@ -61,6 +62,7 @@ const PomodoroPage = (props: PomodoroPageInterface) => {
           </p>
         }
         name={"break"}
+        hasOverran={props.time < 0}
       />
     );
   }
