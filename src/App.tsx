@@ -1,6 +1,6 @@
 import reset from './img/reset.png';
 import finish from './img/finish.png';
-import './App.css';
+import './Common.css';
 import PomodoroButton from './tsx/PomodoroButton';
 import { useEffect, useState } from 'react';
 

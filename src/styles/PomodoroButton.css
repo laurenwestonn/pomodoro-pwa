@@ -16,3 +16,11 @@
   transform: translate(-50%, -50%);
   margin:0;
 }
+
+.pomodoro-button__focus {
+  background-color: var(--working-colour);
+}
+
+.pomodoro-button__break {
+  background-color: var(--break-colour);
+}

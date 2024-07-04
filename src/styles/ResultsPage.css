@@ -1,0 +1,10 @@
+.time__focus {
+    font-size: 28px;
+    font-weight: bold;
+    color: var(--working-colour);
+}
+
+.time__break {
+    font-size: 16px;
+    color: var(--break-colour);
+}

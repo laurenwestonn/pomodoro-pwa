@@ -1,5 +1,6 @@
 import '../styles/PomodoroButton.css';
 import {State, formatTime} from '../App';
+import ResultsPage from './ResultsPage';
 
 interface PomodoroButtonInterface {
   state: State,
@@ -38,16 +39,12 @@ const PomodoroButton = (props: PomodoroButtonInterface) => {
     )
   } else if (props.state === State.break) {
     return (
-      <button
-        className="pomodoro-button pomodoro-button__break"
-        onClick={() => {
-          props.setState(State.focus);
-          const recommendedBreak = calcBreak(props.history[props.history.length-1]);
-          props.setHistory([...props.history, recommendedBreak - props.time])
-          props.setTime(0);
-        }}>
-          <p>Back to it in...<br /><span>{formatTime(props.time)}</span></p>
-      </button>
+      <ResultsPage
+          setState={props.setState}
+          history={props.history}
+          setHistory={props.setHistory}
+          time={props.time}
+          setTime={props.setTime} />
     )
   }
 
